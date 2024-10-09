@@ -30,5 +30,5 @@ side = "BOTH"
 modId = "chemlib"
 mandatory = true
 versionRange = "[2.0.19,)"
-ordering = "BEFORE"
+ordering = "AFTER"
 side = "BOTH"

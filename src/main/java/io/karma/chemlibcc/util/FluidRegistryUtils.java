@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package io.karma.chemlibcc;
+package io.karma.chemlibcc.util;
 
 import com.smashingmods.chemlib.common.blocks.ChemicalLiquidBlock;
 import com.smashingmods.chemlib.registry.FluidRegistry;

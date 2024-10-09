@@ -24,13 +24,14 @@ import com.smashingmods.chemlib.api.MatterState;
 import com.smashingmods.chemlib.api.MetalType;
 import com.smashingmods.chemlib.common.blocks.ChemicalBlock;
 import com.smashingmods.chemlib.common.blocks.LampBlock;
-import com.smashingmods.chemlib.common.items.CompoundItem;
-import com.smashingmods.chemlib.common.items.ElementItem;
 import com.smashingmods.chemlib.registry.BlockRegistry;
 import com.smashingmods.chemlib.registry.ChemicalRegistry;
 import com.smashingmods.chemlib.registry.ItemRegistry;
 import io.karma.chemlibcc.ChemLibCC;
-import io.karma.chemlibcc.FluidRegistryUtils;
+import io.karma.chemlibcc.item.GeneratedCompoundItem;
+import io.karma.chemlibcc.item.GeneratedElementItem;
+import io.karma.chemlibcc.util.FluidRegistryUtils;
+import io.karma.chemlibcc.util.ItemRegistryUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.fml.loading.FMLLoader;
@@ -82,6 +83,7 @@ public final class ChemicalRegistryMixin {
         for (final var jsonElement : rootObject.getAsJsonArray("elements")) {
             final var object = jsonElement.getAsJsonObject();
             final var elementName = object.get("name").getAsString();
+            final var displayName = object.get("display_name").getAsString();
             final var atomicNumber = object.get("atomic_number").getAsInt();
             final var abbreviation = object.get("abbreviation").getAsString();
             final var group = object.get("group").getAsInt();
@@ -92,7 +94,8 @@ public final class ChemicalRegistryMixin {
             final var color = object.get("color").getAsString();
 
             ItemRegistry.REGISTRY_ELEMENTS.register(elementName,
-                () -> new ElementItem(elementName,
+                () -> new GeneratedElementItem(elementName,
+                    displayName,
                     atomicNumber,
                     abbreviation,
                     group,
@@ -110,10 +113,10 @@ public final class ChemicalRegistryMixin {
                         final var hasItem = object.has("has_item") && object.get("has_item").getAsBoolean();
 
                         if (metalType == MetalType.METAL) {
-                            ItemRegistry.registerItemByType(registryObject, ChemicalItemType.PLATE);
+                            ItemRegistryUtils.registerItemByType(registryObject, ChemicalItemType.PLATE);
                             if (!hasItem) {
-                                ItemRegistry.registerItemByType(registryObject, ChemicalItemType.NUGGET);
-                                ItemRegistry.registerItemByType(registryObject, ChemicalItemType.INGOT);
+                                ItemRegistryUtils.registerItemByType(registryObject, ChemicalItemType.NUGGET);
+                                ItemRegistryUtils.registerItemByType(registryObject, ChemicalItemType.INGOT);
                                 BlockRegistry.BLOCKS.register(String.format("%s_metal_block", elementName),
                                     () -> new ChemicalBlock(new ResourceLocation(ChemLib.MODID, elementName),
                                         ChemicalBlockType.METAL,
@@ -124,7 +127,7 @@ public final class ChemicalRegistryMixin {
                                     new Item.Properties()));
                             }
                         }
-                        ItemRegistry.registerItemByType(registryObject, ChemicalItemType.DUST);
+                        ItemRegistryUtils.registerItemByType(registryObject, ChemicalItemType.DUST);
                     }
                     case LIQUID, GAS -> {
                         final var hasFluid = object.has("has_fluid") && object.get("has_fluid").getAsBoolean();
@@ -162,6 +165,7 @@ public final class ChemicalRegistryMixin {
         for (final var jsonElement : rootObject.getAsJsonArray("compounds")) {
             final var object = jsonElement.getAsJsonObject();
             final var compoundName = object.get("name").getAsString();
+            final var displayName = object.get("display_name").getAsString();
             final var matterState = MatterState.valueOf(object.get("matter_state").getAsString().toUpperCase(Locale.ROOT));
             final var description = object.has("description") ? object.get("description").getAsString() : "";
             final var color = object.get("color").getAsString();
@@ -176,7 +180,8 @@ public final class ChemicalRegistryMixin {
             }
 
             ItemRegistry.REGISTRY_COMPOUNDS.register(compoundName,
-                () -> new CompoundItem(compoundName,
+                () -> new GeneratedCompoundItem(compoundName,
+                    displayName,
                     matterState,
                     componentMap,
                     description,
@@ -187,10 +192,10 @@ public final class ChemicalRegistryMixin {
                 case SOLID -> {
                     final var hasItem = object.get("has_item").getAsBoolean();
                     if (!hasItem) {
-                        ItemRegistry.registerItemByType(ItemRegistry.getRegistryObject(ItemRegistry.REGISTRY_COMPOUNDS,
+                        ItemRegistryUtils.registerItemByType(ItemRegistry.getRegistryObject(ItemRegistry.REGISTRY_COMPOUNDS,
                             compoundName), ChemicalItemType.COMPOUND);
                         if (compoundName.equals("polyvinyl_chloride")) {
-                            ItemRegistry.registerItemByType(ItemRegistry.getRegistryObject(ItemRegistry.REGISTRY_COMPOUNDS,
+                            ItemRegistryUtils.registerItemByType(ItemRegistry.getRegistryObject(ItemRegistry.REGISTRY_COMPOUNDS,
                                 compoundName), ChemicalItemType.PLATE);
                         }
                     }
