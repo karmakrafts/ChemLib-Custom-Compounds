@@ -15,12 +15,9 @@
 
 package io.karma.chemlibcc.item;
 
-import com.smashingmods.chemlib.ChemLib;
 import com.smashingmods.chemlib.api.ChemicalItemType;
 import com.smashingmods.chemlib.common.items.ChemicalItem;
 import io.karma.chemlibcc.ChemLibCC;
-import io.karma.chemlibcc.util.GeneratedChemical;
-import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -35,28 +32,11 @@ import java.util.List;
  * @author Alexander Hinze
  * @since 09/10/2024
  */
-public final class GeneratedCompoundDustItem extends ChemicalItem {
-    public GeneratedCompoundDustItem(ResourceLocation pResourceLocation,
-                                     ChemicalItemType pChemicalItemType,
-                                     Properties pProperties) {
+public final class GeneratedChemicalItem extends ChemicalItem {
+    public GeneratedChemicalItem(final ResourceLocation pResourceLocation,
+                                 final ChemicalItemType pChemicalItemType,
+                                 final Properties pProperties) {
         super(pResourceLocation, pChemicalItemType, pProperties);
-    }
-
-    @Override
-    public @NotNull Component getName(final @NotNull ItemStack stack) {
-        final var chemical = getChemical();
-        if (!(chemical instanceof GeneratedChemical generatedChemical)) {
-            return super.getName(stack);
-        }
-        final var compoundNameKey = String.format("item.%s.compound_%s", ChemLib.MODID, getChemicalName());
-        // @formatter:off
-        var compoundName = I18n.exists(compoundNameKey)
-            ? I18n.get(compoundNameKey)
-            : generatedChemical.getDisplayName();
-        // @formatter:on
-        return Component.literal(String.format("%s %s",
-            compoundName,
-            I18n.get(String.format("%s.dust", ChemLibCC.MODID))));
     }
 
     @Override

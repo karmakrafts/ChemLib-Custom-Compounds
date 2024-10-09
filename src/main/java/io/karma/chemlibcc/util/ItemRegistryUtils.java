@@ -18,6 +18,7 @@ package io.karma.chemlibcc.util;
 import com.smashingmods.chemlib.api.ChemicalItemType;
 import com.smashingmods.chemlib.common.items.ChemicalItem;
 import com.smashingmods.chemlib.registry.ItemRegistry;
+import io.karma.chemlibcc.item.GeneratedChemicalItem;
 import io.karma.chemlibcc.item.GeneratedCompoundDustItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.RegistryObject;
@@ -37,7 +38,7 @@ public final class ItemRegistryUtils {
         final var registryName = String.format("%s_%s",
             pRegistryObject.getId().getPath(),
             pChemicalItemType.getSerializedName());
-        final Supplier<ChemicalItem> supplier = () -> new ChemicalItem(pRegistryObject.getId(),
+        final Supplier<ChemicalItem> supplier = () -> new GeneratedChemicalItem(pRegistryObject.getId(),
             pChemicalItemType,
             new Item.Properties());
         switch (pChemicalItemType) {

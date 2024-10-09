@@ -19,10 +19,14 @@ import com.smashingmods.chemlib.ChemLib;
 import com.smashingmods.chemlib.api.MatterState;
 import com.smashingmods.chemlib.api.MetalType;
 import com.smashingmods.chemlib.common.items.ElementItem;
+import io.karma.chemlibcc.ChemLibCC;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -61,5 +65,14 @@ public final class GeneratedElementItem extends ElementItem {
     public @NotNull Component getName(final @NotNull ItemStack stack) {
         return Component.translatableWithFallback(String.format("item.%s.element_%s", ChemLib.MODID, getChemicalName()),
             displayName);
+    }
+
+    @Override
+    public void appendHoverText(final @NotNull ItemStack stack,
+                                final @Nullable Level world,
+                                final @NotNull List<Component> tooltip,
+                                final @NotNull TooltipFlag isAdvanced) {
+        tooltip.add(Component.translatable(String.format("tooltip.%s", ChemLibCC.MODID)));
+        super.appendHoverText(stack, world, tooltip, isAdvanced);
     }
 }

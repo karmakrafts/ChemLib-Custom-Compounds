@@ -18,11 +18,15 @@ package io.karma.chemlibcc.item;
 import com.smashingmods.chemlib.ChemLib;
 import com.smashingmods.chemlib.api.MatterState;
 import com.smashingmods.chemlib.common.items.CompoundItem;
+import io.karma.chemlibcc.ChemLibCC;
 import io.karma.chemlibcc.util.GeneratedChemical;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Map;
@@ -62,5 +66,14 @@ public final class GeneratedCompoundItem extends CompoundItem implements Generat
     @Override
     public String getDisplayName() {
         return displayName;
+    }
+
+    @Override
+    public void appendHoverText(final @NotNull ItemStack stack,
+                                final @Nullable Level world,
+                                final @NotNull List<Component> tooltip,
+                                final @NotNull TooltipFlag isAdvanced) {
+        tooltip.add(Component.translatable(String.format("tooltip.%s", ChemLibCC.MODID)));
+        super.appendHoverText(stack, world, tooltip, isAdvanced);
     }
 }
