@@ -1,5 +1,5 @@
 {
-  "package": "io.karma.ccc.mixin",
+  "package": "io.karma.chemlibcc.mixin",
   "required": true,
   "refmap": "mixins.chemlibcc.refmap.json",
   "target": "@env(DEFAULT)",
@@ -8,5 +8,7 @@
   "injectors": {
     "maxShiftBy": 100
   },
-  "mixins": []
+  "mixins": [
+    "ChemicalRegistryMixin"
+  ]
 }

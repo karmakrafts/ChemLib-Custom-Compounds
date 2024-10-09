@@ -76,6 +76,7 @@ repositories {
     maven("https://thedarkcolour.github.io/KotlinForForge")
     maven("https://maven.blamejared.com")
     maven("https://cursemaven.com")
+    maven("https://dvs1.progwml6.com/files/maven")
 }
 
 dependencies {
@@ -130,6 +131,7 @@ minecraft {
 
 mixin {
     add(mainSourceSet, "mixins.$modId.refmap.json")
+    config("mixins.$modId.common.json")
 }
 
 fun Manifest.applyCommonManifest() {
@@ -159,7 +161,7 @@ tasks {
             "mod_license" to license,
             "mod_version" to version,
             "mod_authors" to "Karma Krafts",
-            "mod_description" to "A small addon for ChemLib that allows adding elements and compounds using datapacks.")
+            "mod_description" to "A small addon for ChemLib that allows adding elements and compounds using JSON configs.")
         inputs.properties(properties)
         filesMatching(listOf("META-INF/mods.toml", "pack.mcmeta")) {
             expand(properties)

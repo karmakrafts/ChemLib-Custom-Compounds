@@ -4,14 +4,12 @@ license = "${mod_license}"
 
 [[mods]] #mandatory
 modId = "${mod_id}" #mandatory
-logoFile = "/assets/peregrine/peregrine_logo.png"
+logoFile = "/assets/chemlibcc/chemlibcc_logo.png"
 version = "${mod_version}" #mandatory
 displayName = "${mod_name}" #mandatory
 authors = "${mod_authors}" #optional
 description = '''${mod_description}'''
 credits = """
-My coffee maker for supplying the liquid patience i needed to write this library.
-My keyboard and desk for withstanding my frustration when dealing with OpenGL.
 """
 
 [[dependencies.${ mod_id }]] #optional
@@ -29,18 +27,8 @@ ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.${ mod_id }]]
-modId = "embeddium"
-mandatory = false
-versionRange = "[0.3.30-beta.48+mc1.20.1,)"
-ordering = "AFTER"
-side = "CLIENT"
-
-[[dependencies.${ mod_id }]]
-modId = "oculus"
-mandatory = false
-versionRange = "[1.7.0,)"
-ordering = "AFTER"
-side = "CLIENT"
-
-[features.${ mod_id }]
-openGLVersion = "[4.1,)"
+modId = "chemlib"
+mandatory = true
+versionRange = "[2.0.19,)"
+ordering = "BEFORE"
+side = "BOTH"
