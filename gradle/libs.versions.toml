@@ -1,5 +1,5 @@
 [versions]
-chemlibcc = "1.0.0"
+chemlibcc = "1.0.1"
 minecraft = "1.20.1"
 minecraftForge = "1.20.1-47.2.30"
 mappings = "2023.09.03" # https://parchmentmc.org/docs/getting-started
@@ -9,6 +9,7 @@ mixinGradle = "0.7.38" # https://repo.spongepowered.org/#browse/browse:maven-pub
 librarian = "1.2.0" # https://github.com/ParchmentMC/Librarian/tags
 
 chemlib = "5128632" # https://www.curseforge.com/minecraft/mc-mods/chemlib/files/all
+jei = "15.20.0.104" # https://maven.blamejared.com/mezz/jei/jei-1.20.1-forge/
 embeddium = "0.3.30-beta.48+mc1.20.1" # https://maven.blamejared.com/org/embeddedt/
 oculus = "5299671" # https://www.curseforge.com/minecraft/mc-mods/oculus/files/all?page=1&pageSize=20
 
@@ -19,6 +20,8 @@ junit = "5.10.3" # https://mvnrepository.com/artifact/org.junit.jupiter/junit-ju
 minecraftForge = { module = "net.minecraftforge:forge", version.ref = "minecraftForge" }
 
 chemlib = { module = "curse.maven:chemlib-340666", version.ref = "chemlib" }
+jei-forge-core = { module = "mezz.jei:jei-1.20.1-forge", version.ref = "jei" }
+jei-forge-api = { module = "mezz.jei:jei-1.20.1-forge-api", version.ref = "jei" }
 embeddium = { module = "org.embeddedt:embeddium-1.20.1", version.ref = "embeddium" }
 oculus = { module = "curse.maven:oculus-581495", version.ref = "oculus" }
 

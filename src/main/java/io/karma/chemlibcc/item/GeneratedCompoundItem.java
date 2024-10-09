@@ -15,6 +15,7 @@
 
 package io.karma.chemlibcc.item;
 
+import com.smashingmods.chemlib.ChemLib;
 import com.smashingmods.chemlib.api.MatterState;
 import com.smashingmods.chemlib.common.items.CompoundItem;
 import io.karma.chemlibcc.util.GeneratedChemical;
@@ -46,7 +47,16 @@ public final class GeneratedCompoundItem extends CompoundItem implements Generat
 
     @Override
     public @NotNull Component getName(final @NotNull ItemStack stack) {
-        return Component.literal(displayName);
+        return Component.translatableWithFallback(String.format("item.%s.compound_%s",
+            ChemLib.MODID,
+            getChemicalName()), displayName);
+    }
+
+    @Override
+    public @NotNull Component getDescription() {
+        return Component.translatableWithFallback(String.format("%s.jei.compound.%s.description",
+            ChemLib.MODID,
+            getChemicalName()), getChemicalDescription());
     }
 
     @Override

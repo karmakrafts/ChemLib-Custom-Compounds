@@ -15,9 +15,12 @@
 
 package io.karma.chemlibcc.item;
 
+import com.smashingmods.chemlib.ChemLib;
 import com.smashingmods.chemlib.api.ChemicalItemType;
 import com.smashingmods.chemlib.common.items.ChemicalItem;
+import io.karma.chemlibcc.ChemLibCC;
 import io.karma.chemlibcc.util.GeneratedChemical;
+import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -40,6 +43,14 @@ public final class GeneratedCompoundDustItem extends ChemicalItem {
         if (!(chemical instanceof GeneratedChemical generatedChemical)) {
             return super.getName(stack);
         }
-        return Component.literal(String.format("%s Dust", generatedChemical.getDisplayName()));
+        final var compoundNameKey = String.format("item.%s.compound_%s", ChemLib.MODID, getChemicalName());
+        // @formatter:off
+        var compoundName = I18n.exists(compoundNameKey)
+            ? I18n.get(compoundNameKey)
+            : generatedChemical.getDisplayName();
+        // @formatter:on
+        return Component.literal(String.format("%s %s",
+            compoundName,
+            I18n.get(String.format("%s.dust", ChemLibCC.MODID))));
     }
 }

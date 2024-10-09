@@ -85,6 +85,8 @@ dependencies {
     //implementation(fg.deobf(libs.embeddium.get().toString()))
     //implementation(fg.deobf(libs.oculus.get().toString()))
     implementation(fg.deobf(libs.chemlib.get().toString()))
+    implementation(fg.deobf(libs.jei.forge.api.get().toString()))
+    implementation(fg.deobf(libs.jei.forge.core.get().toString()))
 
     testImplementation(libs.junit.api)
     testRuntimeOnly(libs.junit.engine)
