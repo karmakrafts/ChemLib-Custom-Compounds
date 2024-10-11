@@ -1,13 +1,12 @@
 {
   "homepage": "https://www.curseforge.com/minecraft/mc-mods/chemlib-custom-compounds",
   "promos": {
-    "1.20.1-latest": "1.0.1.9",
-    "1.20.1-recommended": "1.0.1.9"
+    "1.20.1-latest": "1.0.1.8",
+    "1.20.1-recommended": "1.0.1.8"
   },
   "1.20.1": {
     "1.0.1.6": "- Added a versions.json to allow for update checking",
     "1.0.1.7": "- Fixed version recommendations in versions.json",
-    "1.0.1.8": "- Added automatic version tagging",
-    "1.0.1.9": "- Fix issue in CI configuration"
+    "1.0.1.8": "- Added automatic version tagging"
   }
 }
