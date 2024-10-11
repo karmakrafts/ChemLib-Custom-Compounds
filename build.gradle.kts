@@ -23,6 +23,7 @@ import java.util.*
 import kotlin.io.path.div
 import kotlin.io.path.inputStream
 import kotlin.io.path.pathString
+import kotlin.io.path.writeText
 
 plugins {
     eclipse
@@ -51,7 +52,8 @@ val mcVersion: String = libs.versions.minecraft.get()
 val buildNumber: Int = System.getenv("CI_PIPELINE_IID")?.toIntOrNull() ?: 0
 val buildTime: Instant = Instant.now()
 
-version = "${libs.versions.chemlibcc.get()}.$buildNumber"
+val baseVersion: String = libs.versions.chemlibcc.get()
+version = "$baseVersion.$buildNumber"
 group = buildConfig["group"] as String
 base.archivesName = "$modId-$mcVersion"
 
@@ -146,6 +148,13 @@ fun Manifest.applyCommonManifest() {
         this["Implementation-Vendor"] = "Karma Krafts"
         this["Implementation-Version"] = version
         this["Implementation-Timestamp"] = SimpleDateFormat.getDateTimeInstance().format(Date.from(buildTime))
+    }
+}
+
+val generateVersionInfo by tasks.registering {
+    doLast {
+        println(baseVersion)
+        (rootDir.toPath() / ".version").writeText(baseVersion)
     }
 }
 
