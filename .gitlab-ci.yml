@@ -23,8 +23,6 @@ build:
     - master
   tags:
     - linux
-    - macos
-    - windows
 
 create-release:
   stage: release
