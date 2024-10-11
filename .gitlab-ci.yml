@@ -1,5 +1,6 @@
 stages:
   - build
+  - release
 
 before_script:
   - export JAVA_HOME=/home/sdks/zulu-17
@@ -20,5 +21,25 @@ build:
     expire_in: 1 days
   only:
     - master
+  tags:
+    - linux
+    - macos
+    - windows
+
+create-release:
+  stage: release
+  rules:
+    - if: $CI_COMMIT_TAG
+      when: never
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  before_script:
+    - echo "Fetching project version from libs.versions.toml"
+    - export PROJECT_VERSION=$(./gradlew generateVersionInfo --quiet)
+  script:
+    - echo "Creating release for version $PROJECT_VERSION.$CI_PIPELINE_IID"
+  release:
+    tag_name: '$(cat .version).$CI_PIPELINE_IID'
+    description: '$(cat .version).$CI_PIPELINE_IID'
+    ref: '$CI_COMMIT_SHA'
   tags:
     - linux
