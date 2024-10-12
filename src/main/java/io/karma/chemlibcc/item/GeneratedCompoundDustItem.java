@@ -23,12 +23,7 @@ import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.List;
 
 /**
  * @author Alexander Hinze
@@ -56,14 +51,5 @@ public final class GeneratedCompoundDustItem extends GeneratedChemicalItem {
         return Component.literal(String.format("%s %s",
             compoundName,
             I18n.get(String.format("%s.dust", ChemLibCC.MODID))));
-    }
-
-    @Override
-    public void appendHoverText(final @NotNull ItemStack stack,
-                                final @Nullable Level world,
-                                final @NotNull List<Component> tooltip,
-                                final @NotNull TooltipFlag isAdvanced) {
-        tooltip.add(Component.translatable(String.format("tooltip.%s", ChemLibCC.MODID)));
-        super.appendHoverText(stack, world, tooltip, isAdvanced);
     }
 }

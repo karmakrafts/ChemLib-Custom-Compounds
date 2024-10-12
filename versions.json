@@ -1,8 +1,8 @@
 {
   "homepage": "https://www.curseforge.com/minecraft/mc-mods/chemlib-custom-compounds",
   "promos": {
-    "1.20.1-latest": "1.1.0.12",
-    "1.20.1-recommended": "1.1.0.12"
+    "1.20.1-latest": "1.1.0.13",
+    "1.20.1-recommended": "1.1.0.13"
   },
   "1.20.1": {
     "1.0.1.6": "- Added a versions.json to allow for update checking",
@@ -10,6 +10,7 @@
     "1.0.1.8": "- Added automatic version tagging",
     "1.0.1.9": "- Added missing Gradle task for generating version information",
     "1.0.1.11": "- Remove Git version tagging to save build time",
-    "1.1.0.12": "- Added proper support for custom elements\n- Added translations for all element groups"
+    "1.1.0.12": "- Added proper support for custom elements\n- Added translations for all element groups",
+    "1.1.0.13": "- Fixed duplicated tooltips in generated compound dust items"
   }
 }
