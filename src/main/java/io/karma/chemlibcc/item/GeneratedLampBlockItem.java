@@ -16,30 +16,21 @@
 package io.karma.chemlibcc.item;
 
 import com.smashingmods.chemlib.ChemLib;
-import com.smashingmods.chemlib.api.ChemicalItemType;
-import com.smashingmods.chemlib.common.items.ChemicalItem;
+import com.smashingmods.chemlib.common.blocks.ChemicalBlock;
 import io.karma.chemlibcc.ChemLibCC;
 import io.karma.chemlibcc.util.GeneratedChemical;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.List;
 
 /**
  * @author Alexander Hinze
- * @since 09/10/2024
+ * @since 12/10/2024
  */
-public class GeneratedChemicalItem extends ChemicalItem {
-    public GeneratedChemicalItem(final ResourceLocation pResourceLocation,
-                                 final ChemicalItemType pChemicalItemType,
-                                 final Properties pProperties) {
-        super(pResourceLocation, pChemicalItemType, pProperties);
+public final class GeneratedLampBlockItem extends GeneratedChemicalBlockItem {
+    public GeneratedLampBlockItem(final ChemicalBlock block, final Properties properties) {
+        super(block, properties);
     }
 
     @Override
@@ -56,15 +47,6 @@ public class GeneratedChemicalItem extends ChemicalItem {
         // @formatter:on
         return Component.literal(String.format("%s %s",
             compoundName,
-            I18n.get(String.format("%s.%s", ChemLibCC.MODID, getItemType().getSerializedName()))));
-    }
-
-    @Override
-    public void appendHoverText(final @NotNull ItemStack stack,
-                                final @Nullable Level world,
-                                final @NotNull List<Component> tooltip,
-                                final @NotNull TooltipFlag isAdvanced) {
-        tooltip.add(Component.translatable(String.format("tooltip.%s", ChemLibCC.MODID)));
-        super.appendHoverText(stack, world, tooltip, isAdvanced);
+            I18n.get(String.format("%s.lamp", ChemLibCC.MODID))));
     }
 }

@@ -1,4 +1,20 @@
 {
   "chemlibcc.dust": "Prášek",
-  "tooltip.chemlibcc": "§6Tuto položku přidal CCC"
+  "chemlibcc.ingot": "Ingot",
+  "chemlibcc.nugget": "Nugget",
+  "chemlibcc.plate": "Deska",
+  "chemlibcc.block": "Blok",
+  "chemlibcc.lamp": "Lampy",
+  "tooltip.chemlibcc": "§6Tuto položku přidal CCC",
+  "group.chemlibcc.reactive_non_metals": "Reaktivní nekovy",
+  "group.chemlibcc.noble_gasses": "Ušlechtilé plyny",
+  "group.chemlibcc.alkali_metals": "Alkalické kovy",
+  "group.chemlibcc.alkaline_earth_metals": "Kovy alkalických zemin",
+  "group.chemlibcc.metalloids": "Metalloidy",
+  "group.chemlibcc.halogens": "Halogeny",
+  "group.chemlibcc.post_transition_metals": "Kovy po přechodu",
+  "group.chemlibcc.transition_metals": "Přechodné kovy",
+  "group.chemlibcc.lanthanides": "Lanthanoidy",
+  "group.chemlibcc.actinides": "Aktinidy",
+  "group.chemlibcc.unknown_properties": "Neznámé vlastnosti"
 }

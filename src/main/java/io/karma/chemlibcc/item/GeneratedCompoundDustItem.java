@@ -17,7 +17,6 @@ package io.karma.chemlibcc.item;
 
 import com.smashingmods.chemlib.ChemLib;
 import com.smashingmods.chemlib.api.ChemicalItemType;
-import com.smashingmods.chemlib.common.items.ChemicalItem;
 import io.karma.chemlibcc.ChemLibCC;
 import io.karma.chemlibcc.util.GeneratedChemical;
 import net.minecraft.client.resources.language.I18n;
@@ -35,11 +34,11 @@ import java.util.List;
  * @author Alexander Hinze
  * @since 09/10/2024
  */
-public final class GeneratedCompoundDustItem extends ChemicalItem {
-    public GeneratedCompoundDustItem(ResourceLocation pResourceLocation,
-                                     ChemicalItemType pChemicalItemType,
-                                     Properties pProperties) {
-        super(pResourceLocation, pChemicalItemType, pProperties);
+public final class GeneratedCompoundDustItem extends GeneratedChemicalItem {
+    public GeneratedCompoundDustItem(final ResourceLocation name,
+                                     final ChemicalItemType chemicalItemType,
+                                     final Properties properties) {
+        super(name, chemicalItemType, properties);
     }
 
     @Override

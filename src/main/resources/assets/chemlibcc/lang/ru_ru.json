@@ -1,4 +1,20 @@
 {
   "chemlibcc.dust": "пудра",
-  "tooltip.chemlibcc": "§6Этот пункт был добавлен CCC"
+  "chemlibcc.ingot": "Самородки",
+  "chemlibcc.nugget": "Самородок",
+  "chemlibcc.plate": "Тарелка",
+  "chemlibcc.block": "Блок",
+  "chemlibcc.lamp": "Лампа",
+  "tooltip.chemlibcc": "§6Этот пункт был добавлен CCC",
+  "group.chemlibcc.reactive_non_metals": "Реактивные неметаллы",
+  "group.chemlibcc.noble_gasses": "Благородные газы",
+  "group.chemlibcc.alkali_metals": "Щелочные металлы",
+  "group.chemlibcc.alkaline_earth_metals": "Щелочноземельные металлы",
+  "group.chemlibcc.metalloids": "Металлоиды",
+  "group.chemlibcc.halogens": "Галогены",
+  "group.chemlibcc.post_transition_metals": "Металлы после перехода",
+  "group.chemlibcc.transition_metals": "Переходные металлы",
+  "group.chemlibcc.lanthanides": "Лантаниды",
+  "group.chemlibcc.actinides": "Актиниды",
+  "group.chemlibcc.unknown_properties": "Неизвестные свойства"
 }

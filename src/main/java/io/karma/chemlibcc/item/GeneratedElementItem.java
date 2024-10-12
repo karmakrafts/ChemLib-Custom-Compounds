@@ -20,6 +20,9 @@ import com.smashingmods.chemlib.api.MatterState;
 import com.smashingmods.chemlib.api.MetalType;
 import com.smashingmods.chemlib.common.items.ElementItem;
 import io.karma.chemlibcc.ChemLibCC;
+import io.karma.chemlibcc.util.BuiltinRendererItem;
+import io.karma.chemlibcc.util.ElementGroup;
+import io.karma.chemlibcc.util.GeneratedChemical;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.item.ItemStack;
@@ -34,13 +37,15 @@ import java.util.List;
  * @author Alexander Hinze
  * @since 09/10/2024
  */
-public final class GeneratedElementItem extends ElementItem {
+public final class GeneratedElementItem extends ElementItem implements GeneratedChemical, BuiltinRendererItem {
     private final String displayName;
+    private final String groupName;
 
     public GeneratedElementItem(final String chemicalName,
                                 final String displayName,
                                 final int atomicNumber,
                                 final String abbreviation,
+                                final String groupName,
                                 final int group,
                                 final int period,
                                 final MatterState matterState,
@@ -59,6 +64,17 @@ public final class GeneratedElementItem extends ElementItem {
             color,
             effects);
         this.displayName = displayName;
+        this.groupName = groupName;
+    }
+
+    @Override
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    @Override
+    public @NotNull String getGroupName() {
+        return ElementGroup.byName(groupName).getLocalizedName();
     }
 
     @Override

@@ -1,4 +1,20 @@
 {
   "chemlibcc.dust": "Pulver",
-  "tooltip.chemlibcc": "§6Dieses Item wurde von CCC hinzugefügt"
+  "chemlibcc.ingot": "Barren",
+  "chemlibcc.nugget": "Nugget",
+  "chemlibcc.plate": "Platte",
+  "chemlibcc.block": "Block",
+  "chemlibcc.lamp": "Lampe",
+  "tooltip.chemlibcc": "§6Dieses Item wurde von CCC hinzugefügt",
+  "group.chemlibcc.reactive_non_metals": "Reaktive Nicht-Metalle",
+  "group.chemlibcc.noble_gasses": "Edelgase",
+  "group.chemlibcc.alkali_metals": "Alkalimetalle",
+  "group.chemlibcc.alkaline_earth_metals": "Erdalkalimetalle",
+  "group.chemlibcc.metalloids": "Metalloide",
+  "group.chemlibcc.halogens": "Halogene",
+  "group.chemlibcc.post_transition_metals": "Post-Übergangsmetalle",
+  "group.chemlibcc.transition_metals": "Übergangsmetalle",
+  "group.chemlibcc.lanthanides": "Lanthanoide",
+  "group.chemlibcc.actinides": "Aktinide",
+  "group.chemlibcc.unknown_properties": "Unbekannte Eigenschaften"
 }

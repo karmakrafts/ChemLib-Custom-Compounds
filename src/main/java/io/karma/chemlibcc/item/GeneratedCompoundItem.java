@@ -38,13 +38,13 @@ import java.util.Map;
 public final class GeneratedCompoundItem extends CompoundItem implements GeneratedChemical {
     private final String displayName;
 
-    public GeneratedCompoundItem(String compoundName,
-                                 String displayName,
-                                 MatterState matterState,
-                                 Map<String, Integer> components,
-                                 String description,
-                                 String color,
-                                 List<MobEffectInstance> effects) {
+    public GeneratedCompoundItem(final String compoundName,
+                                 final String displayName,
+                                 final MatterState matterState,
+                                 final Map<String, Integer> components,
+                                 final String description,
+                                 final String color,
+                                 final List<MobEffectInstance> effects) {
         super(compoundName, matterState, components, description, color, effects);
         this.displayName = displayName;
     }

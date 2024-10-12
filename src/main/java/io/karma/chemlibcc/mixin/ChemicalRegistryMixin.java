@@ -22,14 +22,14 @@ import com.smashingmods.chemlib.api.ChemicalBlockType;
 import com.smashingmods.chemlib.api.ChemicalItemType;
 import com.smashingmods.chemlib.api.MatterState;
 import com.smashingmods.chemlib.api.MetalType;
-import com.smashingmods.chemlib.common.blocks.ChemicalBlock;
-import com.smashingmods.chemlib.common.blocks.LampBlock;
 import com.smashingmods.chemlib.registry.BlockRegistry;
 import com.smashingmods.chemlib.registry.ChemicalRegistry;
 import com.smashingmods.chemlib.registry.ItemRegistry;
 import io.karma.chemlibcc.ChemLibCC;
+import io.karma.chemlibcc.item.GeneratedChemicalBlock;
 import io.karma.chemlibcc.item.GeneratedCompoundItem;
 import io.karma.chemlibcc.item.GeneratedElementItem;
+import io.karma.chemlibcc.item.GeneratedLampBlock;
 import io.karma.chemlibcc.util.FluidRegistryUtils;
 import io.karma.chemlibcc.util.ItemRegistryUtils;
 import net.minecraft.resources.ResourceLocation;
@@ -86,6 +86,7 @@ public final class ChemicalRegistryMixin {
             final var displayName = object.get("display_name").getAsString();
             final var atomicNumber = object.get("atomic_number").getAsInt();
             final var abbreviation = object.get("abbreviation").getAsString();
+            final var groupName = object.get("group_name").getAsString();
             final var group = object.get("group").getAsInt();
             final var period = object.get("period").getAsInt();
             final var matterState = MatterState.valueOf(object.get("matter_state").getAsString().toUpperCase(Locale.ROOT));
@@ -98,6 +99,7 @@ public final class ChemicalRegistryMixin {
                     displayName,
                     atomicNumber,
                     abbreviation,
+                    groupName,
                     group,
                     period,
                     matterState,
@@ -118,12 +120,12 @@ public final class ChemicalRegistryMixin {
                                 ItemRegistryUtils.registerItemByType(registryObject, ChemicalItemType.NUGGET);
                                 ItemRegistryUtils.registerItemByType(registryObject, ChemicalItemType.INGOT);
                                 BlockRegistry.BLOCKS.register(String.format("%s_metal_block", elementName),
-                                    () -> new ChemicalBlock(new ResourceLocation(ChemLib.MODID, elementName),
+                                    () -> new GeneratedChemicalBlock(new ResourceLocation(ChemLib.MODID, elementName),
                                         ChemicalBlockType.METAL,
                                         BlockRegistry.METAL_BLOCKS,
                                         BlockRegistry.METAL_PROPERTIES));
                                 BlockRegistry.getRegistryObjectByName(String.format("%s_metal_block",
-                                    elementName)).ifPresent(block -> ItemRegistry.fromChemicalBlock(block,
+                                    elementName)).ifPresent(block -> ItemRegistryUtils.fromChemicalBlock(block,
                                     new Item.Properties()));
                             }
                         }
@@ -140,12 +142,12 @@ public final class ChemicalRegistryMixin {
 
                             if (group == 18) {
                                 BlockRegistry.BLOCKS.register(String.format("%s_lamp_block", elementName),
-                                    () -> new LampBlock(new ResourceLocation(ChemLib.MODID, elementName),
+                                    () -> new GeneratedLampBlock(new ResourceLocation(ChemLib.MODID, elementName),
                                         ChemicalBlockType.LAMP,
                                         BlockRegistry.LAMP_BLOCKS,
                                         BlockRegistry.LAMP_PROPERTIES));
                                 BlockRegistry.getRegistryObjectByName(String.format("%s_lamp_block",
-                                    elementName)).ifPresent(block -> ItemRegistry.fromChemicalBlock(block,
+                                    elementName)).ifPresent(block -> ItemRegistryUtils.lampFromChemicalBlock(block,
                                     new Item.Properties()));
                             }
                             FluidRegistryUtils.registerFluid(elementName,

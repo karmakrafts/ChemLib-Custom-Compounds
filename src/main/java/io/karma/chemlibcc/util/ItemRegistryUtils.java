@@ -16,14 +16,13 @@
 package io.karma.chemlibcc.util;
 
 import com.smashingmods.chemlib.api.ChemicalItemType;
-import com.smashingmods.chemlib.common.items.ChemicalItem;
+import com.smashingmods.chemlib.common.blocks.ChemicalBlock;
 import com.smashingmods.chemlib.registry.ItemRegistry;
-import io.karma.chemlibcc.item.GeneratedChemicalItem;
-import io.karma.chemlibcc.item.GeneratedCompoundDustItem;
+import io.karma.chemlibcc.item.*;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Item.Properties;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.RegistryObject;
-
-import java.util.function.Supplier;
 
 /**
  * @author Alexander Hinze
@@ -34,20 +33,32 @@ public final class ItemRegistryUtils {
     private ItemRegistryUtils() {}
     // @formatter:on
 
-    public static void registerItemByType(RegistryObject<Item> pRegistryObject, ChemicalItemType pChemicalItemType) {
+    public static <B extends Block> void fromChemicalBlock(RegistryObject<B> registryObject, Properties properties) {
+        ItemRegistry.REGISTRY_BLOCK_ITEMS.register(registryObject.getId().getPath(),
+            () -> new GeneratedChemicalBlockItem((ChemicalBlock) registryObject.get(), properties));
+    }
+
+    public static <B extends Block> void lampFromChemicalBlock(RegistryObject<B> registryObject,
+                                                               Properties properties) {
+        ItemRegistry.REGISTRY_BLOCK_ITEMS.register(registryObject.getId().getPath(),
+            () -> new GeneratedLampBlockItem((ChemicalBlock) registryObject.get(), properties));
+    }
+
+    public static void registerItemByType(RegistryObject<Item> registryObject, ChemicalItemType chemicalItemType) {
         final var registryName = String.format("%s_%s",
-            pRegistryObject.getId().getPath(),
-            pChemicalItemType.getSerializedName());
-        final Supplier<ChemicalItem> supplier = () -> new GeneratedChemicalItem(pRegistryObject.getId(),
-            pChemicalItemType,
-            new Item.Properties());
-        switch (pChemicalItemType) {
+            registryObject.getId().getPath(),
+            chemicalItemType.getSerializedName());
+        switch (chemicalItemType) {
             case COMPOUND -> ItemRegistry.REGISTRY_COMPOUND_DUSTS.register(registryName,
-                () -> new GeneratedCompoundDustItem(pRegistryObject.getId(), pChemicalItemType, new Item.Properties()));
-            case DUST -> ItemRegistry.REGISTRY_METAL_DUSTS.register(registryName, supplier);
-            case NUGGET -> ItemRegistry.REGISTRY_NUGGETS.register(registryName, supplier);
-            case INGOT -> ItemRegistry.REGISTRY_INGOTS.register(registryName, supplier);
-            case PLATE -> ItemRegistry.REGISTRY_PLATES.register(registryName, supplier);
+                () -> new GeneratedCompoundDustItem(registryObject.getId(), chemicalItemType, new Properties()));
+            case DUST -> ItemRegistry.REGISTRY_METAL_DUSTS.register(registryName,
+                () -> new GeneratedDustItem(registryObject.getId(), chemicalItemType, new Properties()));
+            case NUGGET -> ItemRegistry.REGISTRY_NUGGETS.register(registryName,
+                () -> new GeneratedNuggetItem(registryObject.getId(), chemicalItemType, new Properties()));
+            case INGOT -> ItemRegistry.REGISTRY_INGOTS.register(registryName,
+                () -> new GeneratedIngotItem(registryObject.getId(), chemicalItemType, new Properties()));
+            case PLATE -> ItemRegistry.REGISTRY_PLATES.register(registryName,
+                () -> new GeneratedPlateItem(registryObject.getId(), chemicalItemType, new Properties()));
         }
 
     }

@@ -1,4 +1,20 @@
 {
   "chemlibcc.dust": "Poudre",
-  "tooltip.chemlibcc": "§6Cet article a été ajouté par CCC"
+  "chemlibcc.ingot": "Lingot",
+  "chemlibcc.nugget": "Pépite",
+  "chemlibcc.plate": "Assiette",
+  "chemlibcc.block": "Bloc",
+  "chemlibcc.lamp": "Lampe",
+  "tooltip.chemlibcc": "§6Cet article a été ajouté par CCC",
+  "group.chemlibcc.reactive_non_metals": "Non-métaux réactifs",
+  "group.chemlibcc.noble_gasses": "Gaz nobles",
+  "group.chemlibcc.alkali_metals": "Métaux alcalins",
+  "group.chemlibcc.alkaline_earth_metals": "Métaux alcalino-terreux",
+  "group.chemlibcc.metalloids": "Métalloïdes",
+  "group.chemlibcc.halogens": "Halogènes",
+  "group.chemlibcc.post_transition_metals": "Métaux post-transition",
+  "group.chemlibcc.transition_metals": "Métaux de transition",
+  "group.chemlibcc.lanthanides": "Lanthanides",
+  "group.chemlibcc.actinides": "Actinides",
+  "group.chemlibcc.unknown_properties": "Propriétés inconnues"
 }
