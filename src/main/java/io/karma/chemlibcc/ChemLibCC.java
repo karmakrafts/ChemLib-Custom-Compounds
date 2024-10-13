@@ -39,29 +39,19 @@ public class ChemLibCC {
     public static final String MODID = "chemlibcc";
     public static final Logger LOGGER = LogManager.getLogger("ChemLib CC");
 
-    @OnlyIn(Dist.CLIENT)
     private static final ResourceLocation COMPOUND_MODEL = new ResourceLocation(ChemLib.MODID,
         "item/compound_solid_model");
-    @OnlyIn(Dist.CLIENT)
     private static final ResourceLocation COMPOUND_DUST_MODEL = new ResourceLocation(ChemLib.MODID,
         "item/compound_dust_model");
-    @OnlyIn(Dist.CLIENT)
     private static final ResourceLocation COMPOUND_GAS_MODEL = new ResourceLocation(ChemLib.MODID,
         "item/compound_gas_model");
-    @OnlyIn(Dist.CLIENT)
     private static final ResourceLocation COMPOUND_LIQUID_MODEL = new ResourceLocation(ChemLib.MODID,
         "item/compound_liquid_model");
-    @OnlyIn(Dist.CLIENT)
     private static final ResourceLocation BUILTIN_MODEL = new ResourceLocation(MODID, "item/builtin");
-    @OnlyIn(Dist.CLIENT)
     private static final ResourceLocation METAL_BLOCK_MODEL = new ResourceLocation(MODID, "block/metal_block");
-    @OnlyIn(Dist.CLIENT)
     private static final ResourceLocation METAL_BLOCK_ITEM_MODEL = new ResourceLocation(MODID, "item/metal_block");
-    @OnlyIn(Dist.CLIENT)
     private static final ResourceLocation LAMP_BLOCK_MODEL = new ResourceLocation(MODID, "block/lamp");
-    @OnlyIn(Dist.CLIENT)
     private static final ResourceLocation LAMP_ON_BLOCK_MODEL = new ResourceLocation(MODID, "block/lamp_on");
-    @OnlyIn(Dist.CLIENT)
     private static final ResourceLocation LAMP_BLOCK_ITEM_MODEL = new ResourceLocation(MODID, "item/lamp");
 
     public ChemLibCC() {
