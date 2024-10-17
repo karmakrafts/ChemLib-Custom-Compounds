@@ -14,6 +14,7 @@
  *  limitations under the License.
  */
 
+import net.darkhax.curseforgegradle.TaskPublishCurseForge
 import org.gradle.jvm.tasks.Jar
 import java.nio.file.Path
 import java.nio.file.StandardOpenOption
@@ -32,6 +33,8 @@ plugins {
     alias(libs.plugins.forgeGradle)
     alias(libs.plugins.mixinGradle)
     alias(libs.plugins.librarian)
+    alias(libs.plugins.curseforgeGradle)
+    alias(libs.plugins.minotaur)
 }
 
 java {
@@ -180,6 +183,17 @@ tasks {
     }
 }
 
+System.getenv("CI_MODRINTH_TOKEN")?.let { token ->
+    modrinth {
+        this.token = token
+        projectId = project.name
+        versionType = "release"
+        uploadFile = tasks.jar.get()
+        gameVersions.add(libs.versions.minecraft.get())
+        loaders.add("forge") // TODO: add ChemLib as required dependency once its on Modrinth
+    }
+}
+
 tasks {
     withType<JavaCompile> {
         sourceCompatibility = "17"
@@ -190,16 +204,26 @@ tasks {
         duplicatesStrategy = DuplicatesStrategy.INCLUDE
     }
 
+    System.getenv("CI_CURSEFORGE_TOKEN")?.let { token ->
+        create<TaskPublishCurseForge>("publishToCurseForge") {
+            apiToken = token
+            upload(1118255, jar) {
+                addJavaVersion(17, 18, 19, 20, 21)
+                addGameVersion(libs.versions.minecraft.get())
+                addEnvironment("client", "server")
+                addModLoader("forge")
+                addRelation("chemlib", "required")
+            }
+        }
+    }
+
     val archiveName = project.base.archivesName.get()
-    val jar by getting
 
     publishing {
         repositories {
             System.getenv("CI_API_V4_URL")?.let { apiUrl ->
                 maven {
-                    url = uri("${
-                        apiUrl.replace("http://", "https://")
-                    }/projects/${System.getenv("CI_PROJECT_ID")}/packages/maven")
+                    url = uri("$apiUrl/projects/${System.getenv("CI_PROJECT_ID")}/packages/maven")
                     name = "GitLab"
                     credentials(HttpHeaderCredentials::class) {
                         name = "Job-Token"
@@ -217,18 +241,17 @@ tasks {
                 groupId = project.group as String
                 artifactId = archiveName
                 version = project.version as String
-
                 artifact(jar)
 
                 pom {
                     name = artifactId
-                    url = "https://git.karmakrafts.dev/kk/mc-projects/$modId"
+                    url = System.getenv("CI_PROJECT_URL")
                     scm {
                         url = this@pom.url
                     }
                     issueManagement {
                         system = "gitlab"
-                        url = "https://git.karmakrafts.dev/kk/mc-projects/$modId/issues"
+                        url = "${this@pom.url}/issues"
                     }
                     licenses {
                         license {
