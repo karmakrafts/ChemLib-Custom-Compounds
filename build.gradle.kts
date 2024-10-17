@@ -189,6 +189,7 @@ System.getenv("CI_MODRINTH_TOKEN")?.let { token ->
         projectId = project.name
         versionType = "release"
         uploadFile = tasks.jar.get()
+        changelog = "See changes until ${System.getenv("CI_PROJECT_URL")}/-/tree/${System.getenv("CI_COMMIT_SHA")}"
         gameVersions.add(libs.versions.minecraft.get())
         loaders.add("forge") // TODO: add ChemLib as required dependency once its on Modrinth
     }
@@ -213,6 +214,7 @@ tasks {
                 addEnvironment("Client", "Server")
                 addModLoader("Forge")
                 addRelation("chemlib", "requiredDependency")
+                changelog = "See changes until ${System.getenv("CI_PROJECT_URL")}/-/tree/${System.getenv("CI_COMMIT_SHA")}"
             }
         }
     }
