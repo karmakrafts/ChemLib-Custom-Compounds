@@ -208,11 +208,11 @@ tasks {
         create<TaskPublishCurseForge>("publishToCurseForge") {
             apiToken = token
             upload(1118255, jar) {
-                addJavaVersion("17", "18", "19", "20", "21")
+                addJavaVersion("Java 17", "Java 18", "Java 19", "Java 20", "Java 21")
                 addGameVersion(libs.versions.minecraft.get())
-                addEnvironment("client", "server")
-                addModLoader("forge")
-                addRelation("chemlib", "required")
+                addEnvironment("Client", "Server")
+                addModLoader("Forge")
+                addRelation("chemlib", "requiredDependency")
             }
         }
     }
