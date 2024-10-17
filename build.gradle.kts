@@ -214,6 +214,7 @@ tasks {
                 addEnvironment("Client", "Server")
                 addModLoader("Forge")
                 addRelation("chemlib", "requiredDependency")
+                releaseType = "release"
                 changelog = "See changes until ${System.getenv("CI_PROJECT_URL")}/-/tree/${System.getenv("CI_COMMIT_SHA")}"
             }
         }
