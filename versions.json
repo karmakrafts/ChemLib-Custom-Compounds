@@ -1,8 +1,8 @@
 {
   "homepage": "https://www.curseforge.com/minecraft/mc-mods/chemlib-custom-compounds",
   "promos": {
-    "1.20.1-latest": "1.1.0.19",
-    "1.20.1-recommended": "1.1.0.19"
+    "1.20.1-latest": "1.1.0.20",
+    "1.20.1-recommended": "1.1.0.20"
   },
   "1.20.1": {
     "1.0.1.6": "- Added a versions.json to allow for update checking",
@@ -17,6 +17,7 @@
     "1.1.0.16": "- (Hopefully) fixed issues in the CI configuration causing uploads to fail",
     "1.1.0.17": "- Fixed broken CurseGradle cofiguration in CI",
     "1.1.0.18": "- Added missing changelog property to publishing configurations",
-    "1.1.0.19": "- Finalized automatic deployment to CurseForge and Modrinth"
+    "1.1.0.19": "- Finalized automatic deployment to CurseForge and Modrinth",
+	"1.1.0.20": "- Add links for homepage and issue tracker to mod info file"
   }
 }
